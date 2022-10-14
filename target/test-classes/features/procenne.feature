@@ -16,6 +16,7 @@ Feature: US01 Procenne Contact Us test case
     And User waits 3 seconds.
     And User clicks submit button
     And User waits 3 seconds.
+    And User closes the driver.
 
 
 

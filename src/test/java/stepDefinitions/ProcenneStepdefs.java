@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,8 @@ public class ProcenneStepdefs {
     @Given("User goes to {string} website")
     public void userGoesToWebsite(String webSite) {
         Driver.getDriver().get(ConfigReader.getProperty(webSite));
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals("https://www.procenne.com/",actualUrl);
     }
 
     @And("User waits {int} seconds.")
@@ -34,6 +37,8 @@ public class ProcenneStepdefs {
         WebElement anladimButonu = Driver.getDriver().findElement(By.xpath("//*[@id='rcc-confirm-button']"));
         anladimButonu.click();
         page.contactButton.click();
+        WebElement ofisler = Driver.getDriver().findElement(By.xpath("//*[text()='Ofisler']"));
+        Assert.assertTrue(ofisler.isDisplayed());
     }
 
     @And("User enters contact information")
