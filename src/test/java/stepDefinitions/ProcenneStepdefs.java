@@ -14,7 +14,6 @@ import utilities.Driver;
 
 public class ProcenneStepdefs {
     JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
-    Actions actions = new Actions(Driver.getDriver());
     ProcennePage page = new ProcennePage();
     @Given("User goes to {string} website")
     public void userGoesToWebsite(String webSite) {
@@ -53,11 +52,7 @@ public class ProcenneStepdefs {
     @And("User clicks the checkbox one")
     public void userClicksTheCheckboxone() throws InterruptedException {
         js.executeScript("arguments[0].click();",page.checkBox1);
-       // actions.moveToElement(page.checkBox1).perform();
-
-      // Driver.getDriver().manage().getCookies().clear();
         Thread.sleep(2000);
-     //   page.checkBox1.click();
         page.lastOfPage1.click();
         page.readedButton.click();
     }
@@ -65,7 +60,6 @@ public class ProcenneStepdefs {
     @And("User clicks the checkbox2")
     public void userClicksTheCheckbox2() {
         js.executeScript("arguments[0].click();",page.checkBox2);
-        //page.checkBox2.click();
         page.lastOfPage2.click();
         page.readedButton.click();
     }
@@ -73,7 +67,6 @@ public class ProcenneStepdefs {
     @And("User clicks submit button")
     public void userClicksSubmitButton() {
         js.executeScript("arguments[0].click();",page.sendButton);
-      //  page.sendButton.click();
     }
 
     @And("User closes the driver.")
