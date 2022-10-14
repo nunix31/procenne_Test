@@ -3,13 +3,17 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.ProcennePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class ProcenneStepdefs {
+    JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
     Actions actions = new Actions(Driver.getDriver());
     ProcennePage page = new ProcennePage();
     @Given("User goes to {string} website")
@@ -28,6 +32,8 @@ public class ProcenneStepdefs {
 
     @Then("User clicks the contact button")
     public void userClicksTheContactButton() {
+        WebElement anladimButonu = Driver.getDriver().findElement(By.xpath("//*[@id='rcc-confirm-button']"));
+        anladimButonu.click();
         page.contactButton.click();
     }
 
@@ -45,22 +51,29 @@ public class ProcenneStepdefs {
     }
 
     @And("User clicks the checkbox one")
-    public void userClicksTheCheckboxone() {
-    page.checkBox1.click();
-    page.lastOfPage1.click();
-    page.readedButton.click();
+    public void userClicksTheCheckboxone() throws InterruptedException {
+        js.executeScript("arguments[0].click();",page.checkBox1);
+       // actions.moveToElement(page.checkBox1).perform();
+
+      // Driver.getDriver().manage().getCookies().clear();
+        Thread.sleep(2000);
+     //   page.checkBox1.click();
+        page.lastOfPage1.click();
+        page.readedButton.click();
     }
 
     @And("User clicks the checkbox2")
     public void userClicksTheCheckbox2() {
-        page.checkBox2.click();
+        js.executeScript("arguments[0].click();",page.checkBox2);
+        //page.checkBox2.click();
         page.lastOfPage2.click();
         page.readedButton.click();
     }
 
     @And("User clicks submit button")
     public void userClicksSubmitButton() {
-        page.sendButton.click();
+        js.executeScript("arguments[0].click();",page.sendButton);
+      //  page.sendButton.click();
     }
 
     @And("User closes the driver.")

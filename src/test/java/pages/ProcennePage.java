@@ -31,7 +31,7 @@ public class ProcennePage {
     @FindBy (xpath = "(//*[@type='submit'])[1]")
     public WebElement sendButton;
 
-    @FindBy (xpath = "//*[@class='mr-2']")
+    @FindBy (xpath = "(//*[@type='checkbox'])[1]")
     public WebElement checkBox1;
 
     @FindBy (xpath = "(//*[@class='mr-2'])[2]")
